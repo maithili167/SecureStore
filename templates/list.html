@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/stylesheets/style.css">
+</head>
+<body>
+    <h3>List of Files: </h3>{{ message }}
+    <table border="1" style="width:100%">
+    {% for file in result %}
+    <tr>
+    <td>{{ file.name }} </td>
+    <td>{{ file.bytes }} </td>
+    <td> <a href="{{url_for('DeleteFile',file=file.name)}}">Remove file</a> </td>
+    <td> <a href="{{url_for('DownloadFile',file=file.name)}}">Download file</a> </td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
+
+{% endblock %}
